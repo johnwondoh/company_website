@@ -1,0 +1,16 @@
+.layout {
+    background-color: "#595858";
+    color: "white";
+    height: "80vh";
+    width: "100vw"
+  }
+
+.content {
+    width: "80%";
+    position: "absolute";
+    top: "15%";
+    left: "10%";
+    margin: "0 auto";
+    /* // msTransform: "translateY(-50%)",
+    // transform: "translateY(-50%)" */
+}
