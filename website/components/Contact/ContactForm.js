@@ -1,53 +1,20 @@
-import React from "react";
-// nodejs library to set properties for components
-// import PropTypes from "prop-types";
-// @material-ui/core components
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// core components
-import { Typography } from "@material-ui/core";
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-
-import Divider from '@material-ui/core/Divider';
-
 import { FormControl } from '@material-ui/core';
-// import TextField from '@material-ui/core/TextField';
-
-// import { Form, Field } from 'react-final-form';
-// import { TextField, Checkbox, Radio, Select } from 'final-form-material-ui';
 import {
     TextField,
     Select,
     Paper,
-    Link,
     Button,
-    CssBaseline,
-    RadioGroup,
-    FormLabel,
-    MenuItem,
-    FormGroup,
-    FormControlLabel,
+    MenuItem
   } from '@material-ui/core';
+import emailjs from 'emailjs-com'
 
-import {
-    MuiPickersUtilsProvider,
-    TimePicker,
-    DatePicker,
-  } from '@material-ui/pickers';
+
 
 import InputLabel from '@material-ui/core/InputLabel';
-// import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-// import FormControl from '@material-ui/core/FormControl';
-// import Select from '@material-ui/core/Select';
-// icons
-import LanguageIcon from '@material-ui/icons/Language';
 
-import Image from "next/image";
 import styles from "../../assets/jss/components/contactStyles";
 
 
@@ -61,7 +28,66 @@ const useStyles = makeStyles(styles);
 
 export default function Contact(props) {
   
-    const classes = useStyles();
+  const [success, setSuccess] = useState(false)
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    enquiryType: '',
+    enquiry: ''
+  })
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setData({
+      ...data,
+      [name]: value
+    })
+  }
+
+  // const formSubmit = (e) => {
+  //   e.preventDefault()
+  //   console.log(data)
+  // }
+  const sendEmail = (e) => {
+    e.preventDefault();
+    console.log(e.target)
+
+    const templateParams = {
+        from_name: data.name + " (" + data.email + ") and (" + data.phone + ")" ,
+        to_name: 'johnwondoh@gmail.com',
+        message_html: data.enquiry
+      };
+
+    emailjs.send('gmail', 'template_T2w1yx1v', templateParams, 'user_NGECXC5mrzzRi4tQAUhzw')
+        .then((result) => {
+            console.log(result.text);
+            setSuccess(true)
+            resetForm()
+            setTimeout(() => {
+                setSuccess(false);
+           },5000); 
+        }, (error) => {
+            console.log(error.text);
+            setSuccess(true)
+            setTimeout(() => {
+                setSuccess(false);
+           },5000); 
+        });
+  }
+
+  const resetForm = (e) => {
+    setData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      enquiryType: '',
+      enquiry: ''
+    })
+  }
+  const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>       
           <form 
@@ -75,10 +101,9 @@ export default function Contact(props) {
                       disableUnderline={true} 
                       required
                       id="filled-required"
-                    //   variant="standard"
-                    variant="filled"
+                      //   variant="standard"
+                      variant="filled"
                       fullWidth
-                      name="name"
                       label="Name"
                       InputLabelProps={{
                         className: classes.labelStyle,
@@ -86,6 +111,10 @@ export default function Contact(props) {
                       InputProps={{ disableUnderline: true }}
                       size="small"
                       type='text'
+                      // onChange={changeName}
+                      name="name"
+                      value ={data.name}
+                      onChange={handleChange}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -96,7 +125,6 @@ export default function Contact(props) {
                     //   variant="standard"
                     variant="filled"
                       fullWidth
-                      name="email"
                       label="Email address"
                       InputLabelProps={{
                         className: classes.labelStyle,
@@ -104,6 +132,9 @@ export default function Contact(props) {
                       InputProps={{ disableUnderline: true }}
                       size="small"
                       type='email'
+                      name="email"
+                      value={data.email}
+                      onChange={handleChange}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -114,7 +145,6 @@ export default function Contact(props) {
                     //   variant="standard"
                     variant="filled"
                       fullWidth
-                      name="phoneNumber"
                       label="Phone number"
                       InputLabelProps={{
                         className: classes.labelStyle,
@@ -122,6 +152,9 @@ export default function Contact(props) {
                       InputProps={{ disableUnderline: true }}
                       size="small"
                       type='tel'
+                      name='phone'
+                      value={data.phone}
+                      onChange={handleChange}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -132,7 +165,6 @@ export default function Contact(props) {
                     //   variant="standard"
                     variant="filled"
                       fullWidth
-                      name="companyName"
                       label="Company name"
                       InputLabelProps={{
                         className: classes.labelStyle,
@@ -140,6 +172,9 @@ export default function Contact(props) {
                       InputProps={{ disableUnderline: true }}
                       size="small"
                       type='text'
+                      name='company'
+                      value={data.company}
+                      onChange={handleChange}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -153,8 +188,9 @@ export default function Contact(props) {
                         disableUnderline
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        // value={age}
-                        // onChange={handleChange}
+                        name='enquiryType'
+                        value={data.enquiryType}
+                        onChange={handleChange}
                       >
                         <MenuItem value={10}>General</MenuItem>
                         <MenuItem value={20}>Let's discuss your idea</MenuItem>
@@ -167,7 +203,6 @@ export default function Contact(props) {
                     <TextField
                       fullWidth
                       className={classes.fieldStyle}
-                      name="enquiry"
                       size="small"
                       id="standard-multiline-static"
                       label="Optional Enquiry"
@@ -178,6 +213,9 @@ export default function Contact(props) {
                       variant="filled"
                       multiline
                       rows={5}
+                      name='enquiry'
+                      value={data.enquiry}
+                      onChange={handleChange}
                       // defaultValue="Default Value"
                       />
                   </Grid>             
@@ -185,7 +223,7 @@ export default function Contact(props) {
                     <Button
                       type="button"
                       variant="contained"
-                      // onClick={reset}
+                      onClick={resetForm}
                       // disabled={submitting || pristine}
                     >
                       Reset
@@ -196,6 +234,7 @@ export default function Contact(props) {
                       variant="contained"
                       color="primary"
                       type="submit"
+                      onClick={sendEmail}
                       // disabled={submitting}
                     >
                       Submit

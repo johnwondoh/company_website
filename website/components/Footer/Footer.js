@@ -62,7 +62,32 @@ import styles from "../../assets/jss/components/footerStyles";
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 
+import Service from './Service'
 
+const services = [
+  {
+    type: 'Software & Apps',
+    provisions: [
+      'Application development',
+      'Application evolution',
+      'Testing'],
+    key: 1
+  },
+  {
+    type: 'Data Science',
+    provisions: ['Data analysis',
+      'Data engineering',
+      'Machine learning'],
+    key: 2
+  },
+  {
+    type: 'Education & Training',
+    provisions: ['Programming basics', 
+      'Data science', 
+      'Application development'],
+    key: 3
+  }
+]
 
 const useStyles = makeStyles(styles);
 
@@ -70,42 +95,66 @@ const useStyles = makeStyles(styles);
 export default function Footer(props) {
   
     const classes = useStyles();
+
+    const ourProvisions = services.map(s => <Service type={s.type} provisions={s.provisions}/>)
   return (
     <ThemeProvider theme={theme}>
         
       <div className={classes.layout}>
           <div className={classes.content}>
-          <Typography variant="h3" align="center">
+          {/* <Typography variant="h3" align="center">
             Get in touch
+          </Typography> */}
+          <Typography variant="body1" align="center" className={classes.about}>
+          We are a group of software engineers and data scientist working together to develop 
+          the perfect cross-platform solutions for our clients.  
+          Our services include:
+          {/* Ours services include developing and evolving 
+          software applications, providing data analytic solutions, and providing software engineering 
+          and data science training. */}
+           
           </Typography>
-          <Typography variant="h2" align="center">
-            Leave us a message and we'll be in touch shortly (our contact details as an alternative)
-          </Typography>
-          <div className='headerLine'></div>
-          <Box >
-            <Link component='button' href="tel:123-456-7890" className={classes.contact}>
-              <PhoneIcon />
-              <Box component='span' className={classes.contactdetail}>
-              123-456-7890
-              </Box>
-            </Link>
-          </Box>
-          <Box >
-            <Link component='button' href="tel:123-456-7890" className={classes.contact}>
-              <EmailIcon />
-              <Box component='span' className={classes.contactdetail}>
-                someemail@somedomain.com
-              </Box>
-            </Link>
-          </Box>
+          <div className={classes.serviceContainer}>
+            {ourProvisions}
+          </div>
+          {/* <Service /> */}
+          {/* <div className='headerLine'></div>
+          <Typography>
+              Our contact details
+            </Typography> */}
+          <div className={classes.contactHolder}>
+            
+            <Box >
+              <Link component='button' href="tel:123-456-7890" className={classes.contact}>
+                <PhoneIcon />
+                <Box component='span' className={classes.contactdetail}>
+                123-456-7890
+                </Box>
+              </Link>
+            </Box>
+            <Box >
+              <Link component='button' href="tel:123-456-7890" className={classes.contact}>
+                <EmailIcon />
+                <Box component='span' className={classes.contactdetail}>
+                  someemail@somedomain.com
+                </Box>
+              </Link>
+            </Box>
+          </div>
           {/* <EmailIcon /> */}
 
-          Our socials
-          <Box className={classes.socials}>
-            <LinkedInIcon fontSize='large' />
-            <TwitterIcon />
-            <GitHubIcon />
-          </Box>
+          {/* Our socials */}
+          <div className={classes.socials}>
+            <LinkedInIcon className={classes.socialItem}/>
+            <TwitterIcon className={classes.socialItem}/>
+            <GitHubIcon className={classes.socialItem}/>
+          </div>
+
+          <Box>
+              <Typography variant='body1' className={classes.abn}>
+                ABN: 123236789
+              </Typography>
+            </Box>
           {/* <Typography variant="body2" align="center">
             We design informative dashboards for visualising and summarising your data. 
             We develop data science &amp; machine learning solutions for discovering insightful 

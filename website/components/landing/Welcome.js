@@ -54,7 +54,7 @@ export default function Welcome() {
                 Welcome to
                 </Typography> */}
                 
-                <div className='usAnimation'>
+                <div className='usAnimation '>
                   <Typography variant="body1" align="center" className={classes.us}>
                   We’ll build your product with care
                   </Typography>

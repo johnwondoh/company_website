@@ -40,7 +40,8 @@ const welcomeStyle = {
         // maringLeft: '50px',
         // backgroundColor: 'red',
         // border: '2px solid white'
-        borderLeft: '4mm ridge rgb(11, 46, 69, .6)'
+        // borderLeft: '4mm ridge rgb(11, 46, 69, .6)',
+        borderLeft: '4mm ridge rgb(255, 255, 255, .6)'
     },
 
     content: {
