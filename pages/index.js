@@ -5,10 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 // import Container from "@material-ui/core/Container";
 // import theme from "../theme";
 
-import Welcome from "../components/landing/Welcome";
+import Welcome from "../components/Landing/Welcome";
 import Process from "../components/Process/Process";
-import CrossPlatform from '../components/crossplatform/CrossPlatform';
-import DataScience from '../components/dataScience/DataScience';
+import CrossPlatform from '../components/Crossplatform/CrossPlatform';
+import DataScience from '../components/DataScience/DataScience';
 import Contact from '../components/Contact/Contact';
 import Footer from '../components/Footer/Footer'
 
