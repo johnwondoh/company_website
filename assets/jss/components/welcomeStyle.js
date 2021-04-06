@@ -1,4 +1,5 @@
 import { red } from "@material-ui/core/colors";
+import { Autorenew } from "@material-ui/icons";
 import { CgEnter } from "react-icons/cg";
 
 
@@ -30,10 +31,11 @@ const welcomeStyle = {
 
     nameContainer: {
         paddingTop: '40px',
-        paddingLeft: '15%'
+        paddingLeft: '15%',
+        // backgroundColor: 'white'
     },
 
-    compName: {
+    compLogo: {
         width: '20%',
         // margin: '10px',
         // marginTop: '50px',
@@ -41,11 +43,12 @@ const welcomeStyle = {
         // backgroundColor: 'red',
         // border: '2px solid white'
         // borderLeft: '4mm ridge rgb(11, 46, 69, .6)',
-        borderLeft: '4mm ridge rgb(255, 255, 255, .6)'
+        // borderLeft: '4mm ridge rgb(255, 255, 255, .6)'
+        // backgroundColor: 'white'
     },
 
     content: {
-        width: "40%",
+        width: "50%",
         // position: "absolute",
         textAlign: 'center',
         // top: "15%",
@@ -59,6 +62,11 @@ const welcomeStyle = {
         transform: 'translate(-50%, -50%)'
 
     },
+    // introDiv: {
+    //     width: '100%',
+    //     margin: '0 auto',
+    //     verticalAlign: 'middle'
+    // },
     introMessage: {
         // paddingBottom: "1em",
         fontSize: '5em',
@@ -66,14 +74,15 @@ const welcomeStyle = {
         // fontFamily: 'Playfair Display, serif',
         // fontFamily: 'Roboto',
         fontFamily: 'IBM Plex Sans',
-        font3Weight: 500
+        fontWeight: 500,
+        paddingTop: '1.2rem'
+        // margin: 'auto'
         // transform: 'scale(.8, 1)'
     },
     introMessageSub: {
         // paddingBottom: "1em",
-        fontSize: '2em',
+        fontSize: '2rem',
         fontStyle: 'italic',
-        marginLeft: '2em',
         color: 'rgb(214, 214, 214)'
     },
     us: {

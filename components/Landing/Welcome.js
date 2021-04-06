@@ -32,14 +32,26 @@ export default function Welcome() {
         className={classes.layout}>
           <Navbar />
           <div className={classes.nameContainer}>
-            <div className={classes.compName}>
-              <Typography variant="h2" align="center">
+            <div className={classes.compLogo}>
+              <img src='kcLogo.png' alt='Kwik Coder'/>
+              {/* <Typography variant="h2" align="center">
                 We Build Applications
-              </Typography>
+              </Typography> */}
             </div>
           </div>
           <div className={classes.content}>
             <div className='titleAnimation'>
+              <div className={classes.introDiv}>
+                <Typography variant="h6" align="center" className={classes.introMessage}> 
+                  Solutions {' '}
+                  <span className={classes.introMessageSub}> 
+                    that 
+                  </span>
+                   {' '} Matter 
+                </Typography>
+              </div>
+            </div>
+            {/* <div className='titleAnimation'>
                 <Typography variant="h6" align="left" className={classes.introMessage}> 
                   Solutions
                 </Typography>
@@ -49,7 +61,7 @@ export default function Welcome() {
                 <Typography variant="h6" align="left" className={classes.introMessage}> 
                   Matter 
                 </Typography>
-            </div>
+            </div> */}
               {/* <Typography variant="h3" align="center">
                 Welcome to
                 </Typography> */}
