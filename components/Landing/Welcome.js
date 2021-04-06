@@ -33,7 +33,7 @@ export default function Welcome() {
           <Navbar />
           <div className={classes.nameContainer}>
             <div className={classes.compLogo}>
-              <img src='kcLogo.png' alt='Kwik Coder'/>
+              <img src='kcLogo2.png' alt='Kwik Coder' className={classes.logoImg}/>
               {/* <Typography variant="h2" align="center">
                 We Build Applications
               </Typography> */}
@@ -41,7 +41,6 @@ export default function Welcome() {
           </div>
           <div className={classes.content}>
             <div className='titleAnimation'>
-              <div className={classes.introDiv}>
                 <Typography variant="h6" align="center" className={classes.introMessage}> 
                   Solutions {' '}
                   <span className={classes.introMessageSub}> 
@@ -49,7 +48,6 @@ export default function Welcome() {
                   </span>
                    {' '} Matter 
                 </Typography>
-              </div>
             </div>
             {/* <div className='titleAnimation'>
                 <Typography variant="h6" align="left" className={classes.introMessage}> 

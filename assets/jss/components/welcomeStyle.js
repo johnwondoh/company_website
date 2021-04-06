@@ -3,7 +3,7 @@ import { Autorenew } from "@material-ui/icons";
 import { CgEnter } from "react-icons/cg";
 
 
-const welcomeStyle = {
+const welcomeStyle = theme => ({
     layout: {
         // backgroundImage: "url(tech-rings.svg);",
         // backgroundImage: "url(BusinessTechnology.svg);",
@@ -36,30 +36,45 @@ const welcomeStyle = {
     },
 
     compLogo: {
-        width: '20%',
-        // margin: '10px',
-        // marginTop: '50px',
-        // maringLeft: '50px',
-        // backgroundColor: 'red',
-        // border: '2px solid white'
-        // borderLeft: '4mm ridge rgb(11, 46, 69, .6)',
-        // borderLeft: '4mm ridge rgb(255, 255, 255, .6)'
-        // backgroundColor: 'white'
+        width: '15%',
+        [theme.breakpoints.down('lg')]: {
+            width: '15%'
+          },
+        [theme.breakpoints.down('md')]: {
+            width: '25%'
+          },
+        [theme.breakpoints.down('sm')]: {
+            width: '30%'
+          },
+        [theme.breakpoints.down('xs')]: {
+            width: '40%'
+          },
+    },
+
+    logoImg: {
+        width: '100%',
     },
 
     content: {
-        width: "50%",
-        // position: "absolute",
+        width: "60%",
         textAlign: 'center',
-        // top: "15%",
-        // left: "10%",
         margin: "20px auto",
-        //
         position: 'absolute',
         left: '50%',
         top: '50%',
-        // transform: 'translateY(-50%)'
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        [theme.breakpoints.down('lg')]: {
+            width: '60%'
+          },
+        [theme.breakpoints.down('md')]: {
+            width: '75%'
+          },
+        [theme.breakpoints.down('sm')]: {
+            width: '80%'
+          },
+        [theme.breakpoints.down('xs')]: {
+            width: '90%'
+          },
 
     },
     // introDiv: {
@@ -75,9 +90,9 @@ const welcomeStyle = {
         // fontFamily: 'Roboto',
         fontFamily: 'IBM Plex Sans',
         fontWeight: 500,
-        paddingTop: '1.2rem'
-        // margin: 'auto'
-        // transform: 'scale(.8, 1)'
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '4em'
+          },
     },
     introMessageSub: {
         // paddingBottom: "1em",
@@ -97,7 +112,10 @@ const welcomeStyle = {
         width: '50%',
         borderRadius: '25px',
         // border: '2px solid white'
+        [theme.breakpoints.down('xs')]: {
+            width: '65%'
+          }
     }
-};
+});
 
 export default welcomeStyle;
